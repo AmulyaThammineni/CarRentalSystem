@@ -111,10 +111,10 @@
             <div class="dropdown">
                 <button class="dropbtn">Customer</button>
                 <div class="dropdown-content">
-                    <a href="/customer/add">Customer Addition</a>
+                    <a href="/customerAdd">Customer Addition</a>
                     <a href="/customer/update">Customer Update</a>
                     <a href="/customer/delete">Customer Deletion</a>
-                    <a href="/customer/reports">Customer Reports</a>
+                    <a href="/customerReport">Customer Reports</a>
                 </div>
             </div>
             <div class="dropdown">
