@@ -19,12 +19,13 @@ public class Customer  {
     private String email;
     private String license;
     private String expiryDate;
+    private String mobile;
     
     public Customer() {
         super();
     }
 
-    public Customer(String username,String firstName,String lastName,String address ,String email,String license,String expiryDate) {
+    public Customer(String username,String firstName,String lastName,String address ,String email,String license,String expiryDate,String mobile) {
         super();
         this.username=username;
         this.firstName=firstName;
@@ -33,11 +34,17 @@ public class Customer  {
         this.email=email;
         this.license=license;
         this.expiryDate=expiryDate;
+        this.mobile=mobile;
         
     }
 
     
-    public String getUsername() {
+    public Customer(String username, String email) {
+		this.username=username;
+		this.email=email;
+	}
+
+	public String getUsername() {
 		return username;
 	}
 
@@ -92,11 +99,22 @@ public class Customer  {
 	public void setExpiryDate(String expiryDate) {
 		this.expiryDate = expiryDate;
 	}
+	
+	
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 
 	@Override
 	public String toString() {
 		return "Customer [username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", address="
-				+ address + ", email=" + email + ", license=" + license + ", expiryDate=" + expiryDate + "]";
+				+ address + ", email=" + email + ", license=" + license + ", expiryDate=" + expiryDate + ", mobile="
+				+ mobile + "]";
 	}
 
 	
