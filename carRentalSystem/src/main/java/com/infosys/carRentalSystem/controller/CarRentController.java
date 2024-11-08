@@ -2,8 +2,10 @@ package com.infosys.carRentalSystem.controller;
 
 import com.infosys.carRentalSystem.bean.Car;
 import com.infosys.carRentalSystem.bean.CarVariant;
+import com.infosys.carRentalSystem.bean.Customer;
 import com.infosys.carRentalSystem.dao.CarDao;
 import com.infosys.carRentalSystem.dao.CarVariantDao;
+import com.infosys.carRentalSystem.dao.CustomerDao;
 import com.infosys.carRentalSystem.service.CarUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,10 @@ public class CarRentController {
     CarDao carDao;
     
     @Autowired
-    private CarUserService service;
+    CarUserService service;
+    
+    @Autowired
+    CustomerDao customerDao;
 
     @GetMapping("/variantAdd")
     public ModelAndView showVariantEntryPage() {
@@ -108,4 +113,27 @@ public class CarRentController {
 			carDao.save(car);
 			return new ModelAndView("redirect:/carReport");
 		}
+		
+		@GetMapping("/customerAdd")
+		public ModelAndView showCustomerEntryPage() {
+			String username=service.getUserName();
+			String email=service.getEmail();
+			Customer customer=new Customer(username,email);
+			ModelAndView mv=new ModelAndView("customerEntryPage");
+			mv.addObject("customerRecord",customer);
+			return mv;
+		}
+		@PostMapping("/customerAdd")
+		public ModelAndView saveCustomer(@ModelAttribute("customerRecord") Customer customer) {
+			customerDao.save(customer);
+			return new ModelAndView("redirect:/index");
+		}
+		@GetMapping("/customerReport")
+		public ModelAndView showCustomerReportPage() {
+		    List<Customer> customerList = customerDao.findAll();
+		    ModelAndView mv = new ModelAndView("customerReportPage1");
+		    mv.addObject("customerList", customerList);
+		    return mv;
+		}
+
 	} 
