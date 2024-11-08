@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!-- customer -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,17 +78,17 @@
     <div align="center">
     <h1 style="font-family:Cambria">Welcome To Car Rental Page</h1>
     <div class="navbar">
-    <!---<div class="dropdown">
+    <div class="dropdown">
     <button class="dropbtn">Customer
     </button>
     <div class="dropdown-content">
-    <a href="/">Customer Addition</a>
+    <a href="/customerAdd">Customer Addition</a>
     <a href="/">Customer Update</a>
     <a href="/">Customer Deletion</a>
-    <a href="/">Customer Reports</a>
+    <a href="/customerReport">Customer Reports</a>
     </div>
     </div>
-    <div class="dropdown">
+   <!--- <div class="dropdown">
     <button class="dropbtn">Variant
     </button>
     <div class="dropdown-content">
@@ -103,7 +104,7 @@
     <!---<a href="/">Car Addition</a>
     <a href="/">Car Update</a>
     <a href="/">Car Deletion</a>--->
-    <a href="/">Car Report</a>
+    <a href="/carReport">Car Report</a>
     </div>
     </div>
     <div class="dropdown">
