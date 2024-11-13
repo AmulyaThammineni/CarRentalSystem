@@ -4,6 +4,7 @@ import com.infosys.carRentalSystem.bean.Car;
 import com.infosys.carRentalSystem.bean.CarVariant;
 import com.infosys.carRentalSystem.bean.Customer;
 import com.infosys.carRentalSystem.dao.CarDao;
+import com.infosys.carRentalSystem.dao.CarUserRepository;
 import com.infosys.carRentalSystem.dao.CarVariantDao;
 import com.infosys.carRentalSystem.dao.CustomerDao;
 import com.infosys.carRentalSystem.service.CarUserService;
@@ -16,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 @RestController
 public class CarRentController {
 
@@ -31,6 +31,9 @@ public class CarRentController {
     
     @Autowired
     CustomerDao customerDao;
+    
+    @Autowired
+    private CarUserRepository repository;
 
     @GetMapping("/variantAdd")
     public ModelAndView showVariantEntryPage() {
@@ -131,9 +134,47 @@ public class CarRentController {
 		@GetMapping("/customerReport")
 		public ModelAndView showCustomerReportPage() {
 		    List<Customer> customerList = customerDao.findAll();
-		    ModelAndView mv = new ModelAndView("customerReportPage1");
+		    ModelAndView mv = new ModelAndView("customerReportPage");
 		    mv.addObject("customerList", customerList);
 		    return mv;
+		}
+		@GetMapping("/singleCustomerReport")
+		public ModelAndView showSingleCustomerReportPage() {
+			String username=service.getUserName();
+			Customer customer=customerDao.findById(username);
+		    ModelAndView mv = new ModelAndView("singleCustomerReportPage");
+		    mv.addObject("customer", customer);
+		    return mv;
+		}
+		@GetMapping("/customerUpdate/{id}")
+		public ModelAndView showCustomerUpdatePage(@PathVariable String id) {
+			String role=service.getRole();
+			String page="";
+			if(role.equalsIgnoreCase("Admin"))
+				page="customerUpdatePage1";
+			else if(role.equalsIgnoreCase("Customer"))
+				page="customerUpdatePage2";
+			Customer customer=customerDao.findById(id);
+			ModelAndView mv=new ModelAndView(page);
+			mv.addObject("customerRecord",customer);
+			return mv;
+		}
+		@PostMapping("/customerUpdate")
+		public ModelAndView updateCustomer(@ModelAttribute("customerRecord") Customer customer) {
+			String role=service.getRole();
+			String page="";
+			if(role.equalsIgnoreCase("Admin"))
+				page="redirect:/customerReport";
+			else if(role.equalsIgnoreCase("Customer"))
+				page="redirect:/singleCustomerReport";
+			customerDao.save(customer);
+			return new ModelAndView(page);
+		}
+		@GetMapping("/customerDelete/{id}")
+		public ModelAndView deleteCustomer(@PathVariable String id) {
+			customerDao.deleteCustomerById(id);
+			repository.deleteById(id);
+			return new ModelAndView("redirect:/singleCustomerReport");
 		}
 
 	} 
