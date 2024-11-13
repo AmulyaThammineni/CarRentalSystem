@@ -23,8 +23,8 @@
                 <th>License</th>
                 <th>Expiry Date</th>
                 <th>Mobile</th>
-                <th>Deletion</th>
-                <th>Updation</th>
+              <!-- <th>Deletion</th>-->
+               <!-- <th>Updation</th>-->
             </tr>
             
             <c:forEach items="${customerList}" var="customer">
@@ -37,8 +37,8 @@
                     <td>${customer.license}</td>
                     <td>${customer.expiryDate}</td>
                     <td>${customer.mobile}</td>
-                    <td><a href="customerDeletion/${customer.username}">Delete</a></td>
-                    <td><a href="customerUpdate/${customer.username}">Update</a></td>
+                   <!--   <td><a href="customerDelete/${customer.username}">Delete</a></td>
+                    <td><a href="customerUpdate/${customer.username}">Update</a></td> -->
                 </tr>
             </c:forEach>
         </table>
