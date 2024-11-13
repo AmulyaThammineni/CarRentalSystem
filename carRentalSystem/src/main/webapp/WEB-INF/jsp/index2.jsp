@@ -83,9 +83,9 @@
     </button>
     <div class="dropdown-content">
     <a href="/customerAdd">Customer Addition</a>
-    <a href="/">Customer Update</a>
-    <a href="/">Customer Deletion</a>
-    <a href="/customerReport">Customer Reports</a>
+    <a href="/customerUpdate">Customer Update</a>
+    <a href="/customerDelete">Customer Deletion</a>
+    <a href="/singleCustomerReport">Customer Reports</a>
     </div>
     </div>
    <!--- <div class="dropdown">
