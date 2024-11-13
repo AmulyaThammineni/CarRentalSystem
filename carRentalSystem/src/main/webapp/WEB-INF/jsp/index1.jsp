@@ -115,17 +115,15 @@
                 <button class="dropbtn">Customer</button>
                 <div class="dropdown-content">
                    <!--   <a href="/customerAdd">Customer Addition</a>-->
-                    <a href="/">Customer Update</a>
-                    <a href="/">Customer Deletion</a>
                     <a href="/customerReport">Customer Reports</a>
                 </div>
             </div>
             <div class="dropdown">
                 <button class="dropbtn">Variant</button>
                 <div class="dropdown-content">
-                    <a href="/">Variant Addition</a>
-                    <a href="/">Variant Deletion</a>
-                    <a href="/">Variant Reports</a>
+                    <a href="/variantAdd">Variant Addition</a>
+                    <a href="/variantDelete">Variant Deletion</a>
+                    <a href="/variantReport">Variant Reports</a>
                 </div>
             </div>
             <div class="dropdown">
