@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 @Entity
 public class Customer  {
 
@@ -19,13 +18,13 @@ public class Customer  {
     private String email;
     private String license;
     private String expiryDate;
-    private String mobile;
-    
+    private long mobile;
+    private boolean status;
     public Customer() {
         super();
     }
 
-    public Customer(String username,String firstName,String lastName,String address ,String email,String license,String expiryDate,String mobile) {
+    public Customer(String username,String firstName,String lastName,String address ,String email,String license,String expiryDate,long mobile,boolean status) {
         super();
         this.username=username;
         this.firstName=firstName;
@@ -35,13 +34,17 @@ public class Customer  {
         this.license=license;
         this.expiryDate=expiryDate;
         this.mobile=mobile;
+        this.status=status;
+        
         
     }
 
     
     public Customer(String username, String email) {
+    	super();
 		this.username=username;
 		this.email=email;
+		this.status=true;
 	}
 
 	public String getUsername() {
@@ -102,19 +105,28 @@ public class Customer  {
 	
 	
 
-	public String getMobile() {
+	public long getMobile() {
 		return mobile;
 	}
 
-	public void setMobile(String mobile) {
+	public void setMobile(long mobile) {
 		this.mobile = mobile;
+	}
+	
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 	@Override
 	public String toString() {
 		return "Customer [username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", address="
 				+ address + ", email=" + email + ", license=" + license + ", expiryDate=" + expiryDate + ", mobile="
-				+ mobile + "]";
+				+ mobile + ", status=" + status + "]";
 	}
 
 	
